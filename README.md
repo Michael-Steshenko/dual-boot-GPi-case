@@ -1,5 +1,10 @@
 # dual-boot-GPi-case
 Scripts for setting up and dual booting on the GPi case
+## installing the safe shutdown script on raspbian
+1) Install the regular safe shutdown script located here: https://github.com/RetroFlag/retroflag-picase
+2) replace the script in /opt/RetroFlag/SafeShutdown.py with the file with the same name in this repo.
+the modified script, shuts down startx instead of RetroPie if it's open and shuts down the system.
+
 ## connecting a blutooth keyboard to work with multiple partitions
 1) boot into RetroPie and connect a blutooth keyboard using the GPi case keys and RetroPie menu
 2) ssh into the raspberry pi using another computer or press f4 on the blutooth keyboard to gain acess to the terminal (I recommend ssh, and I assume ssh throughout this section, though using a bluetooth keyboard should be somewhat similar)
