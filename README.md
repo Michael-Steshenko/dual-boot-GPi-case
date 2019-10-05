@@ -1,5 +1,5 @@
 # dual-boot-GPi-case
-Scripts for setting up and dual booting on the GPi case
+Scripts for setting up dual booting on the GPi case
 
 ## installing the safe shutdown script on raspbian
 1) Install the regular safe shutdown script located here: https://github.com/RetroFlag/retroflag-picase
@@ -36,7 +36,7 @@ ls
 cd 77:05:11:19:58:F1
 SAVE THIS folder name somwhere
 ls
-7) you should see a single file that's called "info", view its' contents with:
+7) you should see a single file that's called "info", view its contents with:
 sudo nano info
 you should see all the info from the blutooth device stored in this file, copy the contents of this file and save it somewhere on your local machine.
 
