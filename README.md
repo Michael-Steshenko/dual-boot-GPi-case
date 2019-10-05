@@ -9,10 +9,32 @@ the modified script, shuts down startx instead of RetroPie if it's open and shut
 ## installing the safe shutdown script on RetroPie
 
 
-## installing the OS switch script on RetroPie
-Put the boot_to_raspbian.sh file from this git in /opt/retropie/configs/all/runcommand-menu of the RetroPie partition.
+## installing the OS switch scripts
+First we need to create some help text files for our scripts:
+mount the partition on which PINN/NOOBS is installed, if you used PINN to install multiple OSes it should be /dev/mmcblk0p1:
+sudo mount /dev/mmcblk0p1 /media/pinn
+cd /media/pinn
+we need to create two text files:
+sudo nano autoboot_raspbian.txt
+in the text file write the following line: boot_partition=6
+replace 6 with the number of the partition on which raspbian is installed.
+press Ctrl+X, y to confirm and enter to save file.
+
+sudo nano autoboot_retropie.txt
+in the text file write the following line: boot_partition=8
+replace 8 with the number of the partition on which RetroPie is installed.
+press Ctrl+X, y to confirm and enter to save file.
+
+### configuring the script on RetroPie
+Put the boot_raspbian.sh file from this git in /opt/retropie/configs/all/runcommand-menu of the RetroPie partition.
 restart emulationstation.
 You can now access the script by pressing a on your GPi case when launching any game, going to "User Menu" and selecting "boot_to_raspbian".
+
+### configuring the script on Raspbian
+Put boot_retropie.sh script from this git, somwhere it would be easy for you to access, I put it on the Desktop. And make it excecutable:
+chmod +x ~/Desktop/boot_retropie.sh
+
+You can now access the script by double clicking it in X, or running sh ~/Desktop/boot_retropie.sh from terminal.
 
 ## connecting a blutooth keyboard to work with multiple partitions
 1) boot into RetroPie and connect a blutooth keyboard using the GPi case keys and RetroPie menu
