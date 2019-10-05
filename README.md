@@ -1,13 +1,12 @@
 # dual-boot-GPi-case
 Scripts for setting up dual booting on the GPi case
 
-## installing the safe shutdown script on raspbian
-1) Install the regular safe shutdown script located here: https://github.com/RetroFlag/retroflag-picase
-2) replace the script in /opt/RetroFlag/SafeShutdown.py with the file with the same name in this repo.
-the modified script, shuts down startx instead of RetroPie if it's open and shuts down the system.
+## installing the modified safe shutdown scripts
+1) Install the regular safe shutdown script located here: https://github.com/RetroFlag/retroflag-picase on both of the partitions (follow the regular installation steps)
+2) On the Raspbian partition replace the contents of the script in /opt/RetroFlag/SafeShutdown.py with the contents of SafeShutdown_gpi_raspbian.py
+3) On the RetroPie partition replace the contents of the script in /opt/RetroFlag/SafeShutdown.py with the contents of SafeShutdown_gpi_retropie.py
 
-## installing the safe shutdown script on RetroPie
-
+notice that the file names should remain the same (SafeShutdown.py)
 
 ## installing the OS switch scripts
 First we need to create some help text files for our scripts:
