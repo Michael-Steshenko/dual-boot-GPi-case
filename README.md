@@ -111,4 +111,4 @@ cd
 
 umount /mnt/raspbian
 
-13) boot into the other partition with the boot_to_raspbian script and check your bluetooth device is connected.
+13) boot into the other partition with the boot_raspbian script and check your bluetooth device is connected.
