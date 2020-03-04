@@ -1,5 +1,5 @@
 # dual-boot-GPi-case
-Scripts for setting up dual booting RetroPie and Raspbian on the GPi case, with easy switching between the two, and improved SafeShutdown scripts, for both OS.
+Scripts for setting up dual booting RetroPie and Raspbian on the GPi case, with easy switching between the two, a script for the GPi controls on the Raspbian partition to act like a mouse, and improved SafeShutdown scripts, for both OS.
 I am using PINN (an improved version of NOOBS) as my boot-loader, and editing PINN files to boot into different partitions.
 
 ## installing the modified safe shutdown scripts
@@ -10,34 +10,35 @@ I am using PINN (an improved version of NOOBS) as my boot-loader, and editing PI
 notice that the file names should remain the same (SafeShutdown.py)
 
 ## installing the OS switch scripts
-First we need to create some help text files for our scripts:
+First we need to create some help text files for our scripts:  
 mount the partition on which PINN/NOOBS is installed, if you used PINN to install multiple OSes it should be /dev/mmcblk0p1:
-sudo mount /dev/mmcblk0p1 /media/pinn
-cd /media/pinn
-we need to create two text files:
-sudo nano autoboot_raspbian.txt
-in the text file write the following line: boot_partition=6
-replace 6 with the number of the partition on which raspbian is installed.
-press Ctrl+X, y to confirm and enter to save file.
+sudo mount /dev/mmcblk0p1 /media/pinn  
+cd /media/pinn  
+we need to create two text files:  
+sudo nano autoboot_raspbian.txt  
+in the text file write the following line: boot_partition=6  
+replace 6 with the number of the partition on which raspbian is installed.  
+press Ctrl+X, y to confirm and enter to save file.  
 
-sudo nano autoboot_retropie.txt
-in the text file write the following line: boot_partition=8
-replace 8 with the number of the partition on which RetroPie is installed.
-press Ctrl+X, y to confirm and enter to save file.
+sudo nano autoboot_retropie.txt  
+in the text file write the following line: boot_partition=8  
+replace 8 with the number of the partition on which RetroPie is installed.  
+press Ctrl+X, y to confirm and enter to save file.  
 
 ### configuring the script on RetroPie
-Put the boot_raspbian.sh file from this git in /opt/retropie/configs/all/runcommand-menu of the RetroPie partition.
-restart emulationstation.
-You can now access the script by pressing a on your GPi case when launching any game, going to "User Menu" and selecting "boot_to_raspbian".
+Put the boot_raspbian.sh file from this git in /opt/retropie/configs/all/runcommand-menu of the RetroPie partition.  
+restart emulationstation.  
+You can now access the script by pressing a on your GPi case when launching any game, going to "User Menu" and selecting "boot_to_raspbian".  
 
 ### configuring the script on Raspbian
-Put boot_retropie.sh script from this git, somwhere it would be easy for you to access, I put it on the Desktop. And make it excecutable:
-chmod +x ~/Desktop/boot_retropie.sh
+Put boot_retropie.sh script from this git, somwhere it would be easy for you to access, I put it on the Desktop. And make it excecutable:  
+chmod +x ~/Desktop/boot_retropie.sh  
 
-You can now access the script by double clicking it in X, or running sh ~/Desktop/boot_retropie.sh from terminal.
+You can now access the script by double clicking it in X, or running sh ~/Desktop/boot_retropie.sh from terminal.  
 
 ## connecting a blutooth keyboard to work with multiple partitions
-1) boot into RetroPie and connect a blutooth keyboard using the GPi case keys and RetroPie menu
+Note: this step is optional  
+1) boot into RetroPie and connect a blutooth keyboard using the GPi case keys and RetroPie menu  
 2) ssh into the raspberry pi using another computer or press f4 on the blutooth keyboard to gain acess to the terminal (I recommend ssh, and I assume ssh throughout this section, though using a bluetooth keyboard should be somewhat similar)
 you can find the ip using hostname -I or through showip in the RetroPie menu. 
 3) now we need to locate where the info file for the blutooth device is saved, type in: 
@@ -83,33 +84,48 @@ so it's either /dev/mmcblk0p7 or /dev/mmcblk0p9 for me it was /dev/mmcblk0p7 whi
 
 10) mount the partition:
 
-sudo mkdir /mnt/raspbian
+sudo mkdir /mnt/raspbian  
 this will just create a folder, /mnt is just the convention folder to where we mount disks, and raspbian is just the name of the disk
 
-sudo mount /dev/mmcblk0p7 /mnt/raspbian
-this mounts the mmcblk0p7 partition into the raspbian folder we just created.
+sudo mount /dev/mmcblk0p7 /mnt/raspbian  
+this mounts the mmcblk0p7 partition into the raspbian folder we just created.  
 
-11) now we need to create the info file on this partition,
+11) now we need to create the info file on this partition,  
 
-cd /mnt/raspbian/var/lib/bluetooth
-if you get access denied error use sudo chmod -R 775 "path to folder"
+cd /mnt/raspbian/var/lib/bluetooth  
+if you get access denied error use sudo chmod -R 775 "path to folder"  
 
-mkdir B8:27:EB:3D:A0:21 (the first folder name you've saved before)
-cd B8:27:EB:3D:A0:21
+mkdir B8:27:EB:3D:A0:21 (the first folder name you've saved before)  
+cd B8:27:EB:3D:A0:21  
 
-mkdir 77:05:11:19:58:F1 (the second folder name you've saved before)
-cd 77:05:11:19:58:F1
+mkdir 77:05:11:19:58:F1 (the second folder name you've saved before)  
+cd 77:05:11:19:58:F1  
 
-sudo nano info
-paste the contents of the info file you saved on your local machine
-press cntrl+X
-and press Y when prompted to save
+sudo nano info  
+paste the contents of the info file you saved on your local machine  
+press cntrl+X  
+and press Y when prompted to save  
 
-12) unmount the partition:
-cd outside the mounted partition:
+12) unmount the partition:  
+cd outside the mounted partition:  
 
-cd
+cd  
 
-umount /mnt/raspbian
+umount /mnt/raspbian  
 
-13) boot into the other partition with the boot_raspbian script and check your bluetooth device is connected.
+13) boot into the other partition with the boot_raspbian script and check your bluetooth device is connected.  
+
+## Installing the GPiMouse.sh script
+This will allow the GPi controls to act as a mouse under Raspbian.
+1) boot into raspbian
+
+2) install xboxdrv:  
+sudo apt-get update  
+sudo apt-get install xboxdrv
+
+3) place the GPiMouse.sh script from this repository in /opt/RetroFlag
+
+4) now we make GPiMouse.sh run on startup: sudo nano /etc/rc.local
+
+5) add the following lines after the sudo python3 /opt/RetroFlag/SafeShutdown.py & line:  
+sudo sh /opt/RetroFlag/GPiMouse.sh
