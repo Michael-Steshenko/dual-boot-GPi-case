@@ -125,6 +125,8 @@ sudo apt-get install xboxdrv
 
 3) place the GPiMouse.sh script from this repository in /opt/RetroFlag
 
+4) sudo chmod a+x /opt/RetroFlag/GPiMouse.sh
+
 4) now we make GPiMouse.sh run on startup: sudo nano /etc/rc.local
 
 5) add the following lines after the sudo python3 /opt/RetroFlag/SafeShutdown.py & line:  
