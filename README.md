@@ -27,12 +27,13 @@ press Ctrl+X, y to confirm and enter to save file.
 
 ### configuring the script on RetroPie
 Put the boot_raspbian.sh file from this git in /opt/retropie/configs/all/runcommand-menu of the RetroPie partition.  
+chmod a+x /opt/retropie/configs/all/runcommand-menu/boot_raspbian.sh
 restart emulationstation.  
 You can now access the script by pressing a on your GPi case when launching any game, going to "User Menu" and selecting "boot_to_raspbian".  
 
 ### configuring the script on Raspbian
-Put boot_retropie.sh script from this git, somwhere it would be easy for you to access, I put it on the Desktop. And make it excecutable:  
-chmod +x ~/Desktop/boot_retropie.sh  
+Put boot_retropie.sh script from this git, somewhere it would be easy for you to access, I put it on the Desktop. And make it excecutable:  
+chmod a+x ~/Desktop/boot_retropie.sh  
 
 You can now access the script by double clicking it in X, or running sh ~/Desktop/boot_retropie.sh from terminal.  
 
