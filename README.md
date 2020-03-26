@@ -1,5 +1,5 @@
 # dual-boot-GPi-case
-Scripts for setting up dual booting RetroPie and Raspbian on the GPi case, with easy switching between the two, a script for the GPi controls on the Raspbian partition to act like a mouse, and improved SafeShutdown scripts, for both OS.
+Scripts for dual booting RetroPie and Raspbian on the GPi case with easy switching between the two, a script for the GPi controls on the Raspbian partition to act like a mouse, and improved SafeShutdown scripts for both OS.
 I am using PINN (an improved version of NOOBS) as my boot-loader, and editing PINN files to boot into different partitions.
 
 ## installing the modified safe shutdown scripts
