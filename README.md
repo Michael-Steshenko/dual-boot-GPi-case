@@ -1,5 +1,12 @@
-# dual-boot-GPi-case
-Scripts for dual booting RetroPie and Raspbian on the GPi case with easy switching between the two, a script for the GPi controls on the Raspbian partition to act like a mouse, and improved SafeShutdown scripts for both OS.
+# Introduction
+The [GPI Case](http://www.retroflag.com/GPi-CASE.html) is a [Gameboy-Color](https://en.wikipedia.org/wiki/Game_Boy_Color) looking case for the [Raspberry Pi Zero](https://www.raspberrypi.org/products/raspberry-pi-zero-w/) micro computer, The GPI Case is used for running a Linux distribution optimized for using game system emulators.
+
+My Project adds scrips that allow to use the GPI Case as a mini portable computer running Linux, the added features include:
+- Dual booting RetroPie and Raspbian on the GPi case with easy switching between the two
+- GPi controls on the Raspbian partition act like a mouse via a script that runs on startup
+- Improved SafeShutdown scripts for both OSs to protect the device when shutting down.
+- Using a single external blutooth device on all OSs without any configuration when switching to a different OS.
+
 I am using PINN (an improved version of NOOBS) as my boot-loader, and editing PINN files to boot into different partitions.
 
 ## installing the modified safe shutdown scripts
