@@ -1,5 +1,5 @@
 # Introduction
-The [GPi Case](http://www.retroflag.com/GPi-CASE.html) is a [Gameboy-Color](https://en.wikipedia.org/wiki/Game_Boy_Color) looking case for the [Raspberry Pi Zero](https://www.raspberrypi.org/products/raspberry-pi-zero-w/) micro computer, The GPisp Case is used for running a Linux distribution optimized for using game system emulators.
+The [GPi Case](http://www.retroflag.com/GPi-CASE.html) is a [Gameboy-Color](https://en.wikipedia.org/wiki/Game_Boy_Color) looking case for the [Raspberry Pi Zero](https://www.raspberrypi.org/products/raspberry-pi-zero-w/) micro computer, The GPi Case is used for running some Linux distribution optimized for running game-system emulators like RetriPie of Lakka.
 
 My Project adds scrips that allow to use the GPi Case as a mini portable computer running Linux, the added features include:
 - Dual booting RetroPie and Raspbian on the GPi case with easy switching between the two
