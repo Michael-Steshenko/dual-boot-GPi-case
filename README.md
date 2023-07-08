@@ -5,7 +5,7 @@ My Project adds scrips that allow to use the GPi Case as a mini portable compute
 - Dual booting RetroPie and Raspbian on the GPi case with easy switching between the two
 - GPi controls on the Raspbian partition act like a mouse via a script that runs on startup
 - Improved SafeShutdown scripts for both OSs to protect the device when shutting down.
-- Using a single external blutooth device on all OSs without any configuration when switching to a different OS.
+- Using a single external bluetooth device on all OSs without any configuration when switching to a different OS.
 
 I am using PINN (an improved version of NOOBS) as my boot-loader, and editing PINN files to boot into different partitions.
 
@@ -44,12 +44,12 @@ chmod a+x ~/Desktop/boot_retropie.sh
 
 You can now access the script by double clicking it in X, or running sh ~/Desktop/boot_retropie.sh from terminal.  
 
-## connecting a blutooth keyboard to work with multiple partitions
+## connecting a bluetooth keyboard to work with multiple partitions
 Note: this step is optional  
-1) boot into RetroPie and connect a blutooth keyboard using the GPi case keys and RetroPie menu  
-2) ssh into the raspberry pi using another computer or press f4 on the blutooth keyboard to gain acess to the terminal (I recommend ssh, and I assume ssh throughout this section, though using a bluetooth keyboard should be somewhat similar)
+1) boot into RetroPie and connect a bluetooth keyboard using the GPi case keys and RetroPie menu  
+2) ssh into the raspberry pi using another computer or press f4 on the bluetooth keyboard to gain acess to the terminal (I recommend ssh, and I assume ssh throughout this section, though using a bluetooth keyboard should be somewhat similar)
 you can find the ip using hostname -I or through showip in the RetroPie menu. 
-3) now we need to locate where the info file for the blutooth device is saved, type in: 
+3) now we need to locate where the info file for the bluetooth device is saved, type in: 
 
 sudo chmod -R 775 /var/lib/bluetooth
 
@@ -58,7 +58,7 @@ That will give write permission to the group if it's not there and read and exec
 4) cd /var/lib/bluetooth
 ls
 you should see a folder that looks something like this: 
-B8:27:EB:3D:A0:21 this address should correspond to the adress of the blutooth device you've connected, SAVE IT SOMEWHERE.
+B8:27:EB:3D:A0:21 this address should correspond to the adress of the bluetooth device you've connected, SAVE IT SOMEWHERE.
 
 5) cd into it: 
 cd B8:27:EB:3D:A0:21
@@ -69,7 +69,7 @@ SAVE THIS folder name somwhere
 ls
 7) you should see a single file that's called "info", view its contents with:
 sudo nano info
-you should see all the info from the blutooth device stored in this file, copy the contents of this file and save it somewhere on your local machine.
+you should see all the info from the bluetooth device stored in this file, copy the contents of this file and save it somewhere on your local machine.
 
 8) close the file using cntrl+x, if prompted if you want to save the file answear "No".
 
