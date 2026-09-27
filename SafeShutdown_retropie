@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-# modified version of the SafeShutdown.pu file from https://github.com/RetroFlag/retroflag-picase/blob/master/Safe$
+# modified version of the SafeShutdown.py file from https://github.com/RetroFlag/retroflag-picase/blob/master/Safe$
 # this version is for the RetroPie partition of a dual booting gpi case
-# uses subprocess.call func instead of os.system, and works even when booted into terminal
+# uses subprocess.run func instead of os.system, and works even when booted into terminal
 
 from gpiozero import Button, LED
 import subprocess 
@@ -16,8 +16,19 @@ power.on()
 
 #functions that handle button events
 def when_pressed():
-        subprocess.call('sudo killall "emulationstation"', shell=True)
-        subprocess.call('sudo shutdown -h "now"', shell=True)
+    # 1. Gracefully terminate active game/libretro core first (saves in-game progress)
+    subprocess.run(["killall", "-SIGTERM", "retroarch"], check=False)
+
+    # 2. Gracefully terminate EmulationStation (flushes gamelist metadata/play counts)
+    subprocess.run(["killall", "-SIGTERM", "emulationstation"], check=False)
+    subprocess.run(["killall", "-SIGTERM", "emulationstatio"], check=False)
+
+    # 3. Give processes time to cleanly write state and exit
+    time.sleep(5)
+
+    # 4. Halt and power off
+    # -P (or poweroff) ensures the kernel signals power cutoff to the GPi power circuit
+    subprocess.run(["poweroff"], check=False)
   
 btn = Button(powerPin, hold_time=hold)
 btn.when_pressed = when_pressed
